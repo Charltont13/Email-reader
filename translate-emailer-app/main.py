@@ -19,8 +19,10 @@ from google.cloud import translate_v2 as translate
 # Initialize global variable
 translate_client = translate.Client()
 client = datastore.Client()
+
 kind = 'Custinfo'
 Email_kind = 'Email-Info'
+Class_kind = 'Class-Info'
 
 # Start Flask app
 app = Flask(__name__)
@@ -221,9 +223,6 @@ def reply_em(data):
     datastore_entity = list(email_retrieve.fetch())
 
     datastore_entity = datastore_entity[0]
-
-    datastore_entity['Response_Flag'] = True
-    datastore_entity['Response_Date'] = datetime.datetime.now()
 
     sg = sendgrid.SendGridAPIClient(SENDGRID_KEY)
     from_email = Email(SENDGRID_EMAIL, DISPLAY_NAME)

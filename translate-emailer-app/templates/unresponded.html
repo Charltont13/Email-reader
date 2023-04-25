@@ -27,7 +27,11 @@
         <h2>Unresponded Emails</h2>
         <ul>
         {% for email in emails %}
-            <li><a href="/email_read/{{ email.Receive_Date }}">{{ email.id }}</a></li>
+            Email From: {{email.Sender_Email}} <br>
+            Subject: {{email.Subject}} <br>
+            Sent on: {{email.Receive_Date}} <br>
+            Access: <a href="/email_read/{{ email.Receive_Date }}">{{ email.id }}</a>
+            <br>
         {% else %}
             <li>You have no emails yet.</li>
         {% endfor %}
